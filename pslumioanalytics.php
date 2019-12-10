@@ -40,6 +40,7 @@ class PsLumioAnalytics extends Module
         $this->version = '1.0.0';
         $this->author = 'Lumio';
         $this->need_instance = 0;
+        $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
         $this->module_key = '8c5182d8ea6f712bff38d4471f22f322';
 
         /**
