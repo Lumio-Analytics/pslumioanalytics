@@ -51,8 +51,9 @@ class PsLumioAnalytics extends Module
         parent::__construct();
 
         $this->displayName = $this->l('Lumio analytics');
-        $this->description = $this->l('Add Tracking script for Lumio analytics and Informative panel Lumio analytics in detail.');
-
+        $this->description = $this->l(
+            'Add Tracking script for Lumio analytics and Informative panel Lumio analytics in detail.'
+        );
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
     }
 
@@ -232,7 +233,7 @@ class PsLumioAnalytics extends Module
         );
 
         try {
-            $result = $client->registerIntegration($integration);
+            $client->registerIntegration($integration);
         } catch (Exception $e) {
             echo 'Exception when calling AdminsApi->getAll: ', $e->getMessage(), PHP_EOL;
         }
