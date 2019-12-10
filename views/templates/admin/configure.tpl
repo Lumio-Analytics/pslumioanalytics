@@ -24,9 +24,9 @@
 *}
 
 <div class="panel">
-	<h3><i class="icon icon-credit-card"></i> {l s='Lumio analytics' mod='ps-lumio-analytics'}</h3>
+	<h3><i class="icon icon-credit-card"></i> {l s='Lumio analytics' mod='pslumioanalytics'}</h3>
 	<p>
-		<strong>{l s='Set here the Lumio tracking key that you can get from your account' mod='ps-lumio-analytics'}</strong><br />
-		<a href="https://lumio-analytics.com/signup">{l s='Sign Up.' mod='ps-lumio-analytics'}</a>
+		<strong>{l s='Set here the Lumio tracking key that you can get from your account' mod='pslumioanalytics'}</strong><br />
+		<a href="https://lumio-analytics.com/signup">{l s='Sign Up.' mod='pslumioanalytics'}</a>
 	</p>
 </div>

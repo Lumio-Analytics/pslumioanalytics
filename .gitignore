@@ -1,0 +1,9 @@
+.vscode
+.idea
+.DS_Store
+*.iml
+.history/*
+out
+gen
+vendor
+dist/*
