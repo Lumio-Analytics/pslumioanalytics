@@ -103,7 +103,11 @@ class PsLumioAnalytics extends Module
         if (isset($this->errors) && count($this->errors)) {
             $output .= $this->displayError(implode('<br />', $this->errors));
         } elseif (((bool)Tools::isSubmit('submitPs-lumio-analyticsModule')) == true) {
-            $output .= $this->displayConfirmation($this->trans('The settings have been updated.', array(), 'Admin.Notifications.Success'));
+            $output .= $this->displayConfirmation($this->trans(
+                'The settings have been updated.',
+                array(),
+                'Admin.Notifications.Success'
+            ));
         }
         return $output.$this->renderForm();
     }
