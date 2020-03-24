@@ -31,6 +31,8 @@ require_once _PS_MODULE_DIR_ . '/pslumioanalytics/vendor/autoload.php';
 
 class PsLumioAnalytics extends Module
 {
+    /** @var array Errors displayed after post processing */
+    public $errors = array();
     protected $config_form = false;
 
     public function __construct()
@@ -98,7 +100,11 @@ class PsLumioAnalytics extends Module
         }
 
         $output = $this->context->smarty->fetch($this->local_path.'views/templates/admin/configure.tpl');
-
+        if (isset($this->errors) && count($this->errors)) {
+            $output .= $this->displayError(implode('<br />', $this->errors));
+        } elseif (((bool)Tools::isSubmit('submitPs-lumio-analyticsModule')) == true) {
+            $output .= $this->displayConfirmation($this->trans('The settings have been updated.', array(), 'Admin.Notifications.Success'));
+        }
         return $output.$this->renderForm();
     }
 
@@ -123,7 +129,8 @@ class PsLumioAnalytics extends Module
         $helper->tpl_vars = array(
             'fields_value' => $this->getConfigFormValues(), /* Add values for your inputs */
             'languages' => $this->context->controller->getLanguages(),
-            'id_language' => $this->context->language->id
+            'id_language' => $this->context->language->id,
+            'msg' => $this->errors,
         );
 
         return $helper->generateForm(array($this->getConfigForm()));
@@ -177,6 +184,8 @@ class PsLumioAnalytics extends Module
         $key = Configuration::get('PSLUMIOANALYTICS_KEY');
         if (self::isValidKey($key)) {
             $this->registerLumioIntegration(true);
+        } else {
+            $this->errors[] = $this->trans('The integration key is invalid', array(), 'Admin.Notifications.Error');
         }
     }
 
